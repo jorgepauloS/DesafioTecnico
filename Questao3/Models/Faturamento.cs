@@ -2,7 +2,7 @@
 
 namespace Questao3.Models
 {
-    internal class Faturamento
+    public class Faturamento
     {
         [JsonPropertyName("dia")]
         public byte Dia { get; set; }

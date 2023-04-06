@@ -1,22 +1,23 @@
-﻿using Questao3.Models;
+﻿using Questao3;
+using Questao3.Models;
 using System.Text.Json;
 
 var faturamentos = JsonSerializer.Deserialize<List<Faturamento>>(File.OpenRead("dados.json"));
 
 if (faturamentos != null)
 {
-    faturamentos.RemoveAll(e => e.Valor == 0);
+    Auxiliaries.RemoveFaturamentoZerado(ref faturamentos);
 
-    var min = faturamentos.MinBy(e => e.Valor);
+    var min = Auxiliaries.Minimo(faturamentos);
     Console.WriteLine($"O menor faturamento foi {min.Valor} no dia {min.Dia}");
 
-    var max = faturamentos.MaxBy(e => e.Valor);
+    var max = Auxiliaries.Maximo(faturamentos);
     Console.WriteLine($"O maior faturamento foi {max.Valor} no dia {max.Dia}");
 
-    var media = (faturamentos.Sum(e => e.Valor) / faturamentos.Count);
+    var media = Auxiliaries.Media(faturamentos);
     Console.WriteLine($"Média mensal: {media}");
 
-    Console.WriteLine($"Dias em que o faturamento foi maior do que a média mensal: {faturamentos.Where(e => e.Valor > media).Count()}");
+    Console.WriteLine($"Dias em que o faturamento foi maior do que a média mensal: {Auxiliaries.DiasFaturamentoMaiorQueMedia(faturamentos)}");
 }
 else
 {

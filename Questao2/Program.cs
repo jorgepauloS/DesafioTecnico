@@ -6,25 +6,7 @@ while (!int.TryParse(Console.ReadLine(), out pivot))
     Console.WriteLine("Número inválido, tente novamente.");
 }
 
-int fibonacciTotal = 0;
-(int fibonacciA, int fibonacciB) = (0, 1);
-
-bool pivotPertenceFibonnaci = false;
-
-while (pivot > fibonacciTotal)
-{
-    fibonacciTotal = fibonacciA + fibonacciB;
-    fibonacciA = fibonacciB;
-    fibonacciB = fibonacciTotal;
-
-    if (pivot == fibonacciTotal)
-    {
-        pivotPertenceFibonnaci = true;
-        break;
-    }
-}
-
-if (pivotPertenceFibonnaci)
+if (Questao2.Fibonnaci.PivotFibonnaciSequence(pivot))
 {
     Console.WriteLine("O número informado pertence à sequência de Fibonnaci.");
 }

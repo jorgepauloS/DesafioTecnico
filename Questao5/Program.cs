@@ -1,4 +1,4 @@
-﻿using System.Text;
+﻿using Questao5;
 
 Console.WriteLine("Digite o texto a ser invertido: ");
 string? original = Console.ReadLine();
@@ -8,12 +8,4 @@ while (string.IsNullOrEmpty(original))
     original = Console.ReadLine();
 }
 
-Stack<char> chars = new(original);
-StringBuilder reversed = new();
-
-while (chars.Count > 0)
-{
-    reversed.Append(chars.Pop());
-}
-
-Console.WriteLine(reversed.ToString());
+Console.WriteLine(StringInverter.Inversao(original));
